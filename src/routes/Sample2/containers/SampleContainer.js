@@ -2,9 +2,17 @@ import { connect } from 'react-redux'
 import { updatePokemon } from '../modules/sample'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { bindActionCreators } from 'redux';
 
-
-class Sample2 extends React.Component {
+@connect(
+  state => ({
+    sample2 : state.sample2
+  }),
+  dispatch => bindActionCreators({
+    updatePokemon
+  }, dispatch)
+)
+export default class Sample2 extends React.Component {
   static propTypes = {};
   constructor(props) {
     super(props);
@@ -45,12 +53,3 @@ class Sample2 extends React.Component {
     );
   }
 }
-
-
-const mapDispatchToProps = {
-  updatePokemon
-}
-const mapStateToProps = (state) => ({
-  sample2 : state.sample2
-})
-export default connect(mapStateToProps, mapDispatchToProps)(Sample2)
